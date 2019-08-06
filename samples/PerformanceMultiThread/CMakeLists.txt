@@ -1,0 +1,11 @@
+
+add_executable(PerformanceMultiThread Main.cpp)
+find_package(Threads REQUIRED)
+if(THREADS_HAVE_PTHREAD_ARG)
+  target_compile_options(PerformanceMultiThread PUBLIC "-pthread")
+endif()
+if(CMAKE_THREAD_LIBS_INIT)
+  target_link_libraries(PerformanceMultiThread "${CMAKE_THREAD_LIBS_INIT}")
+endif()
+target_link_libraries(PerformanceMultiThread plog)
+set_target_properties(PerformanceMultiThread PROPERTIES FOLDER Samples)
